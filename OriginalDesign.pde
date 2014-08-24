@@ -206,6 +206,7 @@ void enemyControl(){
 
 
 void draw(){
+        smooth();
 	background(255,255,255);
 	if(gameOver){
 		fill(0, 0, 0);
