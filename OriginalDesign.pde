@@ -24,7 +24,7 @@ PImage enemy2Image;
 PImage playerImage;
 
 void setup(){
-  size(500,500,P3D); 
+  size(500,500); 
   background(0,0,0);
   enemy1Image = loadImage("enemy1.png");
   enemy2Image = loadImage("enemy2.png");
