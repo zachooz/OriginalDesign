@@ -1,5 +1,6 @@
 /* @pjs preload="enemy1.png; enemy2.png; player.png; */
 import processing.opengl.*;
+import javax.media.opengl.*;
 
 //arrays that hold your bullets and the enemies
 Bullet bulletHolder[]= new Bullet[100];
