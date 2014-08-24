@@ -1,4 +1,4 @@
-//import processing.opengl.*;
+import processing.opengl.*;
 /* @pjs preload="enemy1.png; enemy2.png; player.png; */
 
 //arrays that hold your bullets and the enemies
@@ -23,7 +23,7 @@ PImage enemy2Image;
 PImage playerImage;
 
 void setup(){
-  size(500,500); 
+  size(500,500, OPENGL); 
   background(0,0,0);
   enemy1Image = loadImage("enemy1.png");
   enemy2Image = loadImage("enemy2.png");
