@@ -84,8 +84,7 @@ body {
 }
 #content {
     display: block;
-    margin-left: auto;
-    margin-right: auto
+    margin-left: auto auto auto auto;
 }
 header {
 	font-family: Arial;
