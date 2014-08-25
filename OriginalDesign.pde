@@ -94,7 +94,7 @@ public class Player {
 			if(you.y+5 <=490) you.y+=5;
 		}
 		if (key == 'D' || key == 'd') {
-			if(you.x+5 <=10) you.x+=5;
+			if(you.x+5 <=490) you.x+=5;
 		}
 		if (key == CODED) {
 			if (keyCode == UP) {
@@ -110,7 +110,7 @@ public class Player {
 			} 
 			
 			if (keyCode == RIGHT) {
-			  if(you.x+5 <=10) you.x+=5;
+			  if(you.x+5 <=490) you.x+=5;
 			} 
 		}
 	}
