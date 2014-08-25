@@ -18,14 +18,15 @@ int score = 0;
 
 //when you lose this is set to true
 boolean gameOver = false;
-
+//images
 PImage enemy1Image;
 PImage enemy2Image;
 PImage playerImage;
-
+//sets up
 void setup(){
   size(500,500); 
   background(0,0,0);
+  frameRate(25);
   enemy1Image = loadImage("enemy1.png");
   enemy2Image = loadImage("enemy2.png");
   playerImage = loadImage("player.png");
@@ -204,7 +205,7 @@ void enemyControl(){
 	
 
 
-
+//draws out all functions
 void draw(){
         smooth();
 	background(255,255,255);
