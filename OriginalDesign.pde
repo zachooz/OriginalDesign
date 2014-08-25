@@ -85,32 +85,32 @@ public class Player {
   public void move(){
 	if (keyPressed) {
 		if (key == 'W' || key == 'w') {
-			if(you.y-5 >=10) you.y-=5;
+			if(you.y-5 >=0) you.y-=5;
 		}
 		if (key == 'A' || key == 'a') {
-			if(you.x-5 >=10) you.x-=5;
+			if(you.x-5 >=0) you.x-=5;
 		}
 		if (key == 'S' || key == 's') {
-			if(you.y+5 <=490) you.y+=5;
+			if(you.y+5 <=480) you.y+=5;
 		}
 		if (key == 'D' || key == 'd') {
-			if(you.x+5 <=490) you.x+=5;
+			if(you.x+5 <=480) you.x+=5;
 		}
 		if (key == CODED) {
 			if (keyCode == UP) {
-			  if(you.y-5 >=10) you.y-=5;
+			  if(you.y-5 >=0) you.y-=5;
 			} 
 			
 			if (keyCode == DOWN) {
-			  if(you.y+5 <=490) you.y+=5;
+			  if(you.y+5 <=480) you.y+=5;
 			} 
 			
 			if (keyCode == LEFT) {
-			  if(you.x-5 >=10) you.x-=5;
+			  if(you.x-5 >=0) you.x-=5;
 			} 
 			
 			if (keyCode == RIGHT) {
-			  if(you.x+5 <=490) you.x+=5;
+			  if(you.x+5 <=480) you.x+=5;
 			} 
 		}
 	}
