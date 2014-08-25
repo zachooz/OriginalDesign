@@ -1,4 +1,4 @@
-Square Tanks
+Mini Survivor
 ==================
 
 link:http://zachooz.github.io/OriginalDesign/
