@@ -264,8 +264,8 @@ void draw(){
 	if(gameOver){
 		fill(0, 0, 0);
 		textSize(32);
-		text("Game Over", 170, 150); 
-		text("Score: "+score, 170, 250);
+		text("Game Over", width - 330, 150); 
+		text("Score: "+score, width - 330, 250);
 	} else {
 	checkCount();
 
@@ -278,7 +278,7 @@ void draw(){
 	
 	fill(0, 0, 0);
 	textSize(32);
-	text("Score: "+score, 350, 50); 
+	text("Score: "+score, width - 170, 50); 
 	}
 
 }
