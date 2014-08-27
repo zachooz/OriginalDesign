@@ -3,9 +3,11 @@
 //arrays that hold your bullets and the enemies
 Bullet bulletHolder[]= new Bullet[100];
 Enemy enemyHolder[] = new Enemy [50];
+PowerUp powerUpHolder[] = new PowerUp [10];
 //count used to iterate through the arrays above;
 int count = 0;
 int enemyCount = 0;
+int powerUpCount = 0;
 
 //time between spawns in ms
 int time = 50;
@@ -13,6 +15,10 @@ int spawn = 0;
 
 //holds your score for the game
 int score = 0;
+
+int enemySize = 20;
+
+int bulletSize = 10;
 
 //when you lose this is set to true
 boolean gameOver = false;
@@ -42,6 +48,9 @@ public class Bullet {
 	}
 }
 
+
+
+
 //class for your character
 public class Player {
   int x;
@@ -66,14 +75,22 @@ public class Player {
 		for(int i =0; i<100; i++){
 		   if(bulletHolder[i] != null){
 			   fill(0,255,0);
-			   ellipse(bulletHolder[i].x, bulletHolder[i].y, 10, 10); 
+			   ellipse(bulletHolder[i].x, bulletHolder[i].y, bulletSize, bulletSize); 
 			   bulletHolder[i].x -= (int) (bulletHolder[i].moveX);
 			   bulletHolder[i].y -= (int) (bulletHolder[i].moveY);
 				for(int a =0; a<50; a++){
-				   if(enemyHolder[a] != null && bulletHolder[i]!= null && bulletHolder[i].x < enemyHolder[a].x + enemyHolder[a].charSize && bulletHolder[i].x > enemyHolder[a].x && bulletHolder[i].y < enemyHolder[a].y + enemyHolder[a].charSize && bulletHolder[i].y > enemyHolder[a].y){
+				   if(enemyHolder[a] != null && bulletHolder[i]!= null && bulletHolder[i].x - bulletSize/2 < enemyHolder[a].x + enemyHolder[a].charSize && bulletHolder[i].x + bulletSize/2 > enemyHolder[a].x && bulletHolder[i].y - bulletSize/2 < enemyHolder[a].y + enemyHolder[a].charSize && bulletHolder[i].y + bulletSize/2 > enemyHolder[a].y){
 					   enemyHolder[a].life -= 1;
 					   enemyHolder[a].charSize +=2;
 					   bulletHolder[i] = null;
+				   }
+				   if(a<10){
+					   if(powerUpHolder[a] != null && bulletHolder[i]!= null && bulletHolder[i].x - bulletSize/2 < powerUpHolder[a].x + powerUpHolder[a].charSize && bulletHolder[i].x + bulletSize/2 > powerUpHolder[a].x && bulletHolder[i].y - bulletSize/2 < powerUpHolder[a].y + powerUpHolder[a].charSize && bulletHolder[i].y + bulletSize/2 > powerUpHolder[a].y){
+					   	   bulletSize++;
+						   bulletHolder[i] = null;
+						   powerUpHolder[a] = null;
+
+					   }
 				   }
 				}
 		   }
@@ -134,6 +151,25 @@ public class Enemy {
 	}
 }
 
+
+
+//class for powerup
+public class PowerUp {
+	int x;
+	int y;
+	int charSize;
+	int life;
+	int speed;
+	PowerUp(int charSize, int x, int y, int life, int speed){
+	this.x = x;
+	this.y=y; 
+	this.charSize = charSize; 
+	this.life = life;
+	this.speed = speed;
+	}
+}
+
+
 //instantiates player
 Player you = new Player(240, 400, 20);
 
@@ -145,13 +181,22 @@ void checkCount(){
 	if(enemyCount >= 50){
 		enemyCount = 0;
 	}
+	if(powerUpCount>=10){
+		powerUpCount = 0;
+	}
 }
 
 //spawns enemy
 void spawnNorm(){
-  enemyHolder[enemyCount] = new Enemy(20,(int) random(10, 490),-10, 10, 2);
+  enemyHolder[enemyCount] = new Enemy(enemySize,(int) random(10, 490),-10, 10, 2);
   enemyCount++;
 }
+
+void spawnPower(){
+  powerUpHolder[powerUpCount] = new PowerUp(20,(int) random(10, 490),-10, 10, 2);
+  powerUpCount++;
+}
+
 
 //controles enemy death and movement.
 void enemyControl(){
@@ -160,7 +205,11 @@ void enemyControl(){
 	if(spawn%time == 0){
 		spawnNorm();	
 	}
-	
+
+	if(spawn%1000 == 0){
+		spawnPower();	
+	}
+
 	for(int i =0; i<50; i++){
 	   if(enemyHolder[i] != null){
 			if(enemyHolder[i].phase == 1){
@@ -168,10 +217,7 @@ void enemyControl(){
 			} else {
 				image(enemy2Image,enemyHolder[i].x, enemyHolder[i].y, enemyHolder[i].charSize, enemyHolder[i].charSize);
 			}
-		
-		   
-		    
-		   
+
 		   if(enemyHolder[i].phase == 1){
 				enemyHolder[i].y += (int) (enemyHolder[i].speed);
 		   }
@@ -197,8 +243,17 @@ void enemyControl(){
 				print("gameOver");
 		   }
 		}
+	    if(i<10 && powerUpHolder[i] != null){
+	    	fill(255, 200, 0);
+	    	noStroke();
+			ellipse(powerUpHolder[i].x, powerUpHolder[i].y, powerUpHolder[i].charSize, powerUpHolder[i].charSize);
+		   
+			powerUpHolder[i].y += (int) (powerUpHolder[i].speed);
+		}
 	}
+	
 }
+
 	
 
 
