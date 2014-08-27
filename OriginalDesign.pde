@@ -108,10 +108,10 @@ public class Player {
 			if(you.x-5 >=0) you.x-=5;
 		}
 		if (key == 'S' || key == 's') {
-			if(you.y+5 <=480) you.y+=5;
+			if(you.y+5 <=height-you.charSize) you.y+=5;
 		}
 		if (key == 'D' || key == 'd') {
-			if(you.x+5 <=480) you.x+=5;
+			if(you.x+5 <=width-you.charSize) you.x+=5;
 		}
 		if (key == CODED) {
 			if (keyCode == UP) {
@@ -119,7 +119,7 @@ public class Player {
 			} 
 			
 			if (keyCode == DOWN) {
-			  if(you.y+5 <=480) you.y+=5;
+			  if(you.y+5 <=height-you.charSize) you.y+=5;
 			} 
 			
 			if (keyCode == LEFT) {
@@ -127,7 +127,7 @@ public class Player {
 			} 
 			
 			if (keyCode == RIGHT) {
-			  if(you.x+5 <=480) you.x+=5;
+			  if(you.x+5 <=width-you.charSize) you.x+=5;
 			} 
 		}
 	}
@@ -221,7 +221,7 @@ void enemyControl(){
 		   if(enemyHolder[i].phase == 1){
 				enemyHolder[i].y += (int) (enemyHolder[i].speed);
 		   }
-		   if(enemyHolder[i].y >= 480){
+		   if(enemyHolder[i].y >= height-enemyHolder[i].charSize){
 			 enemyHolder[i].phase = 2;
 		   }
 		   	if(enemyHolder[i].phase == 2){
