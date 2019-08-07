@@ -12,7 +12,3 @@ link:http://zachooz.github.io/OriginalDesign/
 4. You get 1 point per enemy killed.
 5. If you touch enemy you lose.
 6. If you hit a powerup (the orange balls) then your bullet size increases
-7. 
-#To configure processing with notepad++
-
-http://stackoverflow.com/questions/13019411/configure-notepad-to-execute-with-processing-and-display-errors-from-processin!
